@@ -14,9 +14,6 @@ jobs:
     ## In this case, the job on Ubuntu. Additionally, set a the job
     ## to execute on different Python versions 
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        python-version: ["2.7", "3.5", "3.6", "3.7", "3.8"]
     ## Define a sequence of steps to be executed
     steps:
       ## Use the public `checkout` action  in version v2  
@@ -26,10 +23,8 @@ jobs:
       ## to install python on the Ubuntu based environment.
       ## Additionally, it ensures to loop through all 
       ## the defined Python versions.
-    - name: Set up Python ${{ matrix.python-version }}
+    - name: Set up Python
       uses: actions/setup-python@v5
-      with:
-        python-version: ${{ matrix.python-version }}
     ## Install all necessary dependecies .
     ## For example, pytest and any defined packages within the requirements.txt file.
     - name: Install dependencies
